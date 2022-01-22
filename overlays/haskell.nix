@@ -499,7 +499,7 @@ final: prev: {
               # Avoid readDir and readFile IFD functions looking for these files in the hackage source
               cabalProject = null; cabalProjectLocal = null; cabalProjectFreeze = null;
             } // final.haskell-nix.hackageQuirks { inherit name; version = version'; } //
-              builtins.removeAttrs args [ "version" "revision" ] // { inherit src; });
+              builtins.removeAttrs args [ "version" "revision" ] // { src = args.src or src; });
 
         # This function is like `cabalProject` but it makes the plan-nix available
         # separately from the hsPkgs.  The advantage is that the you can get the
